@@ -21,11 +21,14 @@ router.get('/', auth, async (req, res) => {
                 break;
         }
 
-        const sort = {}
+        const sort = {};
+        let sortOrder = '';
+        let sortValue = 0;
 
-        if (sort) {
+        if (req.query.sort) {
+            console.log('fuck')
             const sortValue = req.query.sort.split('_')[0];
-            let sortOrder = req.query.sort.split('_')[1];
+            sortOrder = req.query.sort.split('_')[1];
         }
 
 
