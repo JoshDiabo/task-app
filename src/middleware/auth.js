@@ -2,8 +2,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 async function auth(req, res, next) {
-    console.log('Authenticating...');
-
     try {
         const token = req.header('Authorization').replace('Bearer ', '');
 
@@ -22,7 +20,6 @@ async function auth(req, res, next) {
         req.activeToken = token;
         next();
     } catch (err) {
-        console.log(err)
         if (err.name ==='MongooseServerSelectionError') {
             return res.status(500).send({
                 error: err

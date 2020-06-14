@@ -127,7 +127,7 @@ router.post('/', async (req, res, next) => {
         res.status(201).send({savedUser, token});
     } catch(err) {
         console.log(err)
-        if (err.name === 'ValidationError') {
+        if (err.name === 'ValidationError' || err.code ===  11000) {
             return res.status(422).send({
                 error: err.message
             });

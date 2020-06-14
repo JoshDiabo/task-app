@@ -1,13 +1,9 @@
 const express = require('express');
 const app = express();
+const multer = require('multer');
 
-const dbConnection = require('./db/mongoose');
 const userRoute = require('./routers/user');
 const taskRoute = require('./routers/task');
-
-const port = process.env.PORT;
-
-const multer = require('multer');
 
 const upload = multer({
     dest: 'test'
@@ -27,16 +23,8 @@ app.use((req, res, next) => {
     next();
 })
 
+module.exports = app;
 
-dbConnection()
-    .then(() => {
-        app.listen(port, () => {
-            console.log('Express initialized on port', port)
-        });
-    })
-    .catch((err) => {
-        console.log(err);
-    });
 
    
 

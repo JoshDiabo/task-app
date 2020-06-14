@@ -23,15 +23,11 @@ router.get('/', auth, async (req, res) => {
 
         const sort = {}
 
-        const sortValue = req.query.sort.split('_')[0];
-        let sortOrder = req.query.sort.split('_')[1];
+        if (sort) {
+            const sortValue = req.query.sort.split('_')[0];
+            let sortOrder = req.query.sort.split('_')[1];
+        }
 
-     
-        // if (sortOrder === 'desc') {
-        //     sortOrder = -1;
-        // } else {
-        //     sortOrder = 1;
-        // }
 
         sortOrder = sortOrder === 'desc' ? -1 : 1;
         
